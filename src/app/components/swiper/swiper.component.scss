@@ -1,6 +1,7 @@
+@use "../../../styles/components/btn.scss" as *;
+
 @import "swiper/scss";
 @import "swiper/scss/pagination";
-@import "swiper/scss/navigation";
 @import "swiper/scss/effect-fade";
 
 .swiper-pagination-bullet {
@@ -9,4 +10,12 @@
 
 .swiper-pagination-bullet-active {
   @apply bg-primary  outline-primary;
+}
+
+.swiper-slide {
+  height: auto;
+}
+
+.swiper-content {
+  height: 100%;
 }

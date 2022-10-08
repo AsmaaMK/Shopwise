@@ -1,0 +1,44 @@
+.btn-hover-effect {
+  @apply relative z-0 overflow-hidden outline-none transition-all duration-300;
+
+  &::after,
+  &::before {
+    content: "";
+    @apply absolute top-0 -z-10 h-full w-0 outline-none transition-all duration-300;
+  }
+
+  &::after {
+    @apply right-0 rounded-r-full;
+  }
+
+  &::before {
+    @apply left-0 rounded-l-full;
+  }
+
+  &:hover {
+    @apply text-white;
+
+    &::after,
+    &::before {
+      @apply w-1/2;
+    }
+  }
+}
+
+.btn-primary {
+  @apply btn-hover-effect;
+
+  &::after,
+  &::before {
+    @apply bg-primary;
+  }
+}
+
+.btn-accent {
+  @apply btn-hover-effect;
+
+  &::after,
+  &::before {
+    @apply bg-accent;
+  }
+}

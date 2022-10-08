@@ -15,7 +15,7 @@ import { SwiperModule } from 'swiper/angular';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    SwiperComponent
+    SwiperComponent,
   ],
   imports: [
     BrowserModule,
