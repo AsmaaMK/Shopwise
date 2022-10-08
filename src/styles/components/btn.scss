@@ -1,5 +1,5 @@
-.btn-hover-effect {
-  @apply relative z-0 overflow-hidden outline-none transition-all duration-300;
+.btn {
+  @apply relative z-0 overflow-hidden rounded-full border px-8 py-3 outline-none transition-all duration-300;
 
   &::after,
   &::before {
@@ -14,31 +14,66 @@
   &::before {
     @apply left-0 rounded-l-full;
   }
+}
+
+.btn-outline-primary {
+  @apply btn border-primary text-primary;
 
   &:hover {
     @apply text-white;
 
     &::after,
     &::before {
-      @apply w-1/2;
+      @apply w-1/2 bg-primary;
     }
   }
 }
 
-.btn-primary {
-  @apply btn-hover-effect;
+.btn-outline-accent {
+  @apply btn border-accent text-accent;
 
-  &::after,
-  &::before {
-    @apply bg-primary;
+  &:hover {
+    @apply text-white;
+
+    &::after,
+    &::before {
+      @apply w-1/2 bg-accent;
+    }
   }
 }
 
-.btn-accent {
-  @apply btn-hover-effect;
+.btn-fill-primary {
+  @apply btn border-primary text-white;
 
   &::after,
   &::before {
-    @apply bg-accent;
+    @apply w-1/2 bg-primary;
+  }
+
+  &:hover {
+    @apply text-primary;
+
+    &::after,
+    &::before {
+      @apply w-0;
+    }
+  }
+}
+
+.btn-fill-accent {
+  @apply btn border-accent text-white;
+
+  &::after,
+  &::before {
+    @apply w-1/2 bg-accent;
+  }
+
+  &:hover {
+    @apply text-accent;
+
+    &::after,
+    &::before {
+      @apply w-0;
+    }
   }
 }

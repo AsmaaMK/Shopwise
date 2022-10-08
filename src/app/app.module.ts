@@ -8,6 +8,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SwiperComponent } from './components/swiper/swiper.component';
 import { SwiperModule } from 'swiper/angular';
+import { BenefitsComponent } from './components/benefits/benefits.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { SwiperModule } from 'swiper/angular';
     FooterComponent,
     HomeComponent,
     SwiperComponent,
+    BenefitsComponent,
   ],
   imports: [
     BrowserModule,

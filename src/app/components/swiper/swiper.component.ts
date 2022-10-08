@@ -7,7 +7,7 @@ import SwiperCore, {
 } from 'swiper';
 
 @Component({
-  selector: 'app-swiper',
+  selector: 'home-swiper',
   templateUrl: './swiper.component.html',
   styleUrls: ['./swiper.component.scss'],
   encapsulation: ViewEncapsulation.None,
