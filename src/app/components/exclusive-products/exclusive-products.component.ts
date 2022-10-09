@@ -4,7 +4,11 @@ import { Product } from 'src/app/models/product';
 @Component({
   selector: 'app-exclusive-products',
   templateUrl: './exclusive-products.component.html',
-  styleUrls: ['./exclusive-products.component.scss'],
+  styles: [
+    `
+      @use '../../../styles/components/titles.scss';
+    `,
+  ],
 })
 export class ExclusiveProductsComponent implements OnInit {
   products: Product[] = [

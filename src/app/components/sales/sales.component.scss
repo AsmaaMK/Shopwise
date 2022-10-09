@@ -1,0 +1,29 @@
+$bg-blue: #e0fef9;
+$bg-yellow: #fffaeb;
+
+.card-blue, 
+.card-yellow {
+  @apply flex flex-col-reverse md:flex-row gap-2 justify-center items-center p-6 text-center md:text-left;
+
+  .card-content {
+    @apply flex-1;
+  }
+
+  .card-image {
+    @apply w-full md:w-1/2 transition-all duration-300;
+  }
+
+  &:hover {
+    .card-image {
+      @apply  scale-110;
+    }
+  }
+}
+
+.card-blue {
+  background-color: $bg-blue;
+}
+
+.card-yellow {
+  background-color: $bg-yellow;
+}
