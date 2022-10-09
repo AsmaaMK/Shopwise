@@ -28,7 +28,7 @@ export class CardComponent implements OnInit {
 
   calculatePriceOff() {
     if (this.product.oldPrice) {
-      this.priceOff = Math.round(
+      this.priceOff = 100 - Math.round(
         (this.product.price / this.product.oldPrice) * 100
       );
     }

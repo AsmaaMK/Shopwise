@@ -10,6 +10,7 @@ import { SwiperComponent } from './components/swiper/swiper.component';
 import { SwiperModule } from 'swiper/angular';
 import { BenefitsComponent } from './components/benefits/benefits.component';
 import { CardComponent } from './components/card/card.component';
+import { ExclusiveProductsComponent } from './components/exclusive-products/exclusive-products.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { CardComponent } from './components/card/card.component';
     SwiperComponent,
     BenefitsComponent,
     CardComponent,
+    ExclusiveProductsComponent,
   ],
   imports: [
     BrowserModule,
