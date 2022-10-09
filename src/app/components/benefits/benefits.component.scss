@@ -2,14 +2,20 @@
   @apply flex flex-wrap gap-[1px] border border-gray-300 bg-gray-300;
 
   .card {
-    @apply min-w-[250px] flex flex-1 flex-wrap gap-4 bg-white p-3;
+    @apply flex flex-1 gap-4 bg-white p-3;
+
+    .image {
+      @apply w-[48px] h-[48px];
+    }
 
     .title {
       @apply text-lg text-accent font-bold;
+      white-space: nowrap;
     }
 
     .description {
       @apply text-gray-500;
+      white-space: nowrap;
     }
   }
 }

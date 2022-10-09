@@ -9,6 +9,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { SwiperComponent } from './components/swiper/swiper.component';
 import { SwiperModule } from 'swiper/angular';
 import { BenefitsComponent } from './components/benefits/benefits.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { BenefitsComponent } from './components/benefits/benefits.component';
     HomeComponent,
     SwiperComponent,
     BenefitsComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,
