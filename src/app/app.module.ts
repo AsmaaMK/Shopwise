@@ -12,6 +12,7 @@ import { BenefitsComponent } from './components/benefits/benefits.component';
 import { CardComponent } from './components/card/card.component';
 import { ExclusiveProductsComponent } from './components/exclusive-products/exclusive-products.component';
 import { SalesComponent } from './components/sales/sales.component';
+import { TrendingItemsComponent } from './components/trending-items/trending-items.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { SalesComponent } from './components/sales/sales.component';
     CardComponent,
     ExclusiveProductsComponent,
     SalesComponent,
+    TrendingItemsComponent,
   ],
   imports: [
     BrowserModule,

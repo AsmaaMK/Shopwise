@@ -4,18 +4,20 @@
 @import "swiper/scss/pagination";
 @import "swiper/scss/effect-fade";
 
-.swiper-pagination-bullet {
-  @apply h-2 w-2 rounded-full outline outline-2 outline-offset-2;
-}
+#header-swiper {
+  .swiper-pagination-bullet {
+    @apply h-2 w-2 rounded-full outline outline-2 outline-offset-2;
+  }
 
-.swiper-pagination-bullet-active {
-  @apply bg-primary  outline-primary;
-}
+  .swiper-pagination-bullet-active {
+    @apply bg-primary  outline-primary;
+  }
 
-.swiper-slide {
-  height: auto;
-}
+  .swiper-slide {
+    height: auto;
+  }
 
-.swiper-content {
-  height: 100%;
+  .swiper-content {
+    height: 100%;
+  }
 }

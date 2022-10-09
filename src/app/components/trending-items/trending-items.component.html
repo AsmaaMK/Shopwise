@@ -1,0 +1,14 @@
+<section id="trending-products-swiper" class="container">
+  <div class="relative">
+    <h2 class="section-title">Trending Items</h2>
+
+    <div class="swiper-button-next absolute"></div>
+    <div class="swiper-button-prev absolute"></div>
+  </div>
+
+  <swiper [config]="swiperConfig" class="my-10">
+    <ng-template *ngFor="let product of products" swiperSlide>
+      <product-card [product]="product"></product-card>
+    </ng-template>
+  </swiper>
+</section>

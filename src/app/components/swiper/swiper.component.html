@@ -1,28 +1,26 @@
-<swiper [config]="swiperConfig">
-  <ng-template *ngFor="let slide of slides" swiperSlide>
-    <div
-      style="background-color: {{ slide.background }}"
-      class="swiper-content relative flex"
-    >
+<section id="header-swiper">
+  <swiper [config]="swiperConfig">
+    <ng-template *ngFor="let slide of slides" swiperSlide>
       <div
-        class="container my-12 flex flex-col items-center justify-between gap-10 p-5 md:flex-row md:gap-40"
+        style="background-color: {{ slide.background }}"
+        class="swiper-content relative flex"
       >
-        <div class="flex-1 text-center md:text-left">
-          <p class="text-6xl font-bold text-accent">{{ slide.title }}</p>
-          <p class="my-8 text-accent">{{ slide.describtion }}</p>
-          <button
-            class="btn-outline-primary uppercase"
-          >
-            shop now
-          </button>
+        <div
+          class="container my-12 flex flex-col items-center justify-between gap-10 p-5 md:flex-row md:gap-40"
+        >
+          <div class="flex-1 text-center md:text-left">
+            <p class="text-6xl font-bold text-accent">{{ slide.title }}</p>
+            <p class="my-8 text-accent">{{ slide.describtion }}</p>
+            <button class="btn-outline-primary uppercase">shop now</button>
+          </div>
+          <div class="flex-1">
+            <img [src]="slide.img" alt="slide image" />
+          </div>
         </div>
-        <div class="flex-1">
-          <img [src]="slide.img" alt="slide image" />
-        </div>
+        <div
+          class="swiper-pagination absolute my-4 flex w-full items-center justify-center gap-2"
+        ></div>
       </div>
-      <div
-        class="swiper-pagination absolute my-4 flex w-full items-center justify-center gap-2"
-      ></div>
-    </div>
-  </ng-template>
-</swiper>
+    </ng-template>
+  </swiper>
+</section>
