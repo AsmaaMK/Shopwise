@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import SwiperCore, { Autoplay, SwiperOptions, Virtual } from 'swiper';
+import SwiperCore, { Autoplay, SwiperOptions } from 'swiper';
 
 @Component({
   selector: 'app-preview-swiper',
@@ -25,6 +25,7 @@ export class PreviewSwiperComponent implements OnInit {
     slidesPerView: 1,
     spaceBetween: 0,
     loop: true,
+    grabCursor: true,
     speed: 500,
     autoplay: {
       delay: 5000,
@@ -52,6 +53,6 @@ export class PreviewSwiperComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    SwiperCore.use([Autoplay, Virtual]);
+    SwiperCore.use([Autoplay]);
   }
 }

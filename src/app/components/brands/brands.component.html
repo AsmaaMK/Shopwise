@@ -1,0 +1,9 @@
+<section id="brands-section" class="container my-20">
+  <swiper [config]="swiperConfig">
+    <ng-template *ngFor="let brand of brnads" swiperSlide>
+      <div class="image">
+        <img [src]="brand" class="" />
+      </div>
+    </ng-template>
+  </swiper>
+</section>

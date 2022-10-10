@@ -1,0 +1,27 @@
+@import "swiper/scss";
+
+#brands-section {
+  .swiper-slide {
+    height: 100px;
+    @apply flex items-center justify-center;
+  }
+
+  .swiper-content {
+    height: 100%;
+  }
+
+  .image {
+    @apply w-full h-full;
+
+    img {
+      filter: grayscale(100%);
+      @apply h-full w-full object-contain transition-all duration-500;
+    }
+
+    &:hover {
+      img {
+        filter: grayscale(0%);
+      }
+    }
+  }
+}

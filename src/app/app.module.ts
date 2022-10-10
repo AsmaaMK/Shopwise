@@ -14,6 +14,7 @@ import { ExclusiveProductsComponent } from './components/exclusive-products/excl
 import { SalesComponent } from './components/sales/sales.component';
 import { TrendingItemsComponent } from './components/trending-items/trending-items.component';
 import { PreviewSwiperComponent } from './components/preview-swiper/preview-swiper.component';
+import { BrandsComponent } from './components/brands/brands.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { PreviewSwiperComponent } from './components/preview-swiper/preview-swip
     SalesComponent,
     TrendingItemsComponent,
     PreviewSwiperComponent,
+    BrandsComponent,
   ],
   imports: [
     BrowserModule,

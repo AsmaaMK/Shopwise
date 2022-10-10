@@ -13,6 +13,7 @@ export class TrendingItemsComponent implements OnInit {
     slidesPerView: 1,
     spaceBetween: 20,
     loop: true,
+    grabCursor: true,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
