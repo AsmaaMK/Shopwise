@@ -1,5 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
+import {
+  faStar as faStarFilled,
+  faCartPlus,
+  faMagnifyingGlassPlus,
+} from '@fortawesome/free-solid-svg-icons';
+import {
+  faHeart as faHeartFilled,
+  faHeart as faHeartOutlined,
+  faStarHalfStroke,
+  faStar,
+} from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   selector: 'product-card',
@@ -7,6 +18,14 @@ import { Product } from 'src/app/models/product';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit {
+  faHeartFilled = faHeartFilled;
+  faheartOutlined = faHeartOutlined;
+  faCart = faCartPlus;
+  faZoom = faMagnifyingGlassPlus;
+  faStarFilled = faStarFilled;
+  faStarHalf = faStarHalfStroke;
+  faStar = faStar;
+
   @Input() product!: Product;
 
   priceOff: number = 0;
@@ -28,9 +47,8 @@ export class CardComponent implements OnInit {
 
   calculatePriceOff() {
     if (this.product.oldPrice) {
-      this.priceOff = 100 - Math.round(
-        (this.product.price / this.product.oldPrice) * 100
-      );
+      this.priceOff =
+        100 - Math.round((this.product.price / this.product.oldPrice) * 100);
     }
   }
 
