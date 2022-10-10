@@ -15,6 +15,8 @@ import { SalesComponent } from './components/sales/sales.component';
 import { TrendingItemsComponent } from './components/trending-items/trending-items.component';
 import { PreviewSwiperComponent } from './components/preview-swiper/preview-swiper.component';
 import { BrandsComponent } from './components/brands/brands.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { BrandsComponent } from './components/brands/brands.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SwiperModule
+    SwiperModule,
+    BrowserAnimationsModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
