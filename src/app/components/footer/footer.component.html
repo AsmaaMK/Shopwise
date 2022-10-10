@@ -1,21 +1,26 @@
 <footer class="bg-accent">
   <div class="container py-20">
-    <div class="flex">
-      <div class="">
-        <h3 class="mb-6 font-bold text-white">Contact Info</h3>
-        <ul class="flex flex-col gap-6">
-          <li class="flex items-center gap-4 text-white">
-            
-            
-            <span>123 Street, Old Trafford, NewYork, USA</span>
+    <div class="flex flex-col justify-between gap-10 md:flex-row">
+      <div class="flex flex-col gap-5">
+        <h3 class="text-center text-lg font-bold text-white md:text-left">
+          Contact Info
+        </h3>
+        <ul class="flex flex-col gap-4">
+          <li>
+            <span
+              class="flex items-start justify-center gap-4 text-center text-white md:justify-start md:text-left"
+            >
+              <fa-icon [icon]="faLocation"></fa-icon>
+              <span>123 Street, Old Trafford, NewYork, USA</span>
+            </span>
           </li>
           <li>
             <a
               href="mailto:info@shopwise.com"
               target="_blank"
-              class="link flex items-center gap-4"
-              >
-              
+              class="link flex items-start justify-center gap-4 md:justify-start"
+            >
+              <fa-icon [icon]="faEmail"></fa-icon>
               <span>info@shopwise.com</span></a
             >
           </li>
@@ -23,20 +28,15 @@
             <a
               href="tel:+1-234-567-890"
               target="_blank"
-              class="link flex items-center gap-4"
-              >
-              
+              class="link flex items-start justify-center gap-4 md:justify-start"
+            >
+              <fa-icon [icon]="faMobile"></fa-icon>
               <span>+1 234 567 890</span></a
             >
           </li>
         </ul>
 
-        <ul>
-          <li>
-            <a href="" target="_blank" class="social-link">
-              
-            </a>
-          </li>
+        <ul class="flex justify-center gap-4 md:justify-start">
           <li>
             <a href="" target="_blank" class="social-link">
               <fa-icon [icon]="faFacebook"></fa-icon>
@@ -44,21 +44,77 @@
           </li>
           <li>
             <a href="" target="_blank" class="social-link">
-
+              <fa-icon [icon]="faTwitter"></fa-icon>
             </a>
           </li>
           <li>
             <a href="" target="_blank" class="social-link">
-
+              <fa-icon [icon]="faGooglePlus"></fa-icon>
             </a>
           </li>
           <li>
             <a href="" target="_blank" class="social-link">
-
+              <fa-icon [icon]="faInstagram"></fa-icon>
+            </a>
+          </li>
+          <li>
+            <a href="" target="_blank" class="social-link">
+              <fa-icon [icon]="faYoutube"></fa-icon>
             </a>
           </li>
         </ul>
       </div>
+
+      <div class="flex flex-col gap-5">
+        <h3 class="text-center text-lg font-bold text-white md:text-left">
+          Quick Links
+        </h3>
+        <ul class="flex flex-col gap-4 text-center md:text-left">
+          <li>
+            <a href="" class="link text-white">About Us</a>
+          </li>
+          <li>
+            <a href="" class="link text-white">Contact Us</a>
+          </li>
+          <li>
+            <a href="" class="link text-white">Terms & Conditions</a>
+          </li>
+          <li>
+            <a href="" class="link text-white">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="" class="link text-white">Help</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="flex flex-col gap-5">
+        <h3 class="text-lg font-bold text-center md:text-left text-white">Newsletter</h3>
+        <p class="text-white text-center md:text-left">
+          Subscribe to our newsletter and get 10% off your first purchase
+        </p>
+        <form class="flex flex-col gap-4">
+          <div class="relative">
+            <input
+              type="email"
+              class="w-full rounded-full p-4 pr-20 outline-1 outline-offset-2 outline-white focus:outline"
+              placeholder="Enter your email address"
+            />
+            <button
+              class="absolute right-1 top-1/2 h-12 w-12 -translate-y-1/2 rounded-full bg-primary p-2 text-lg text-white"
+            >
+              <fa-icon [icon]="faSubscribe"></fa-icon>
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
+
+  <!-- divider -->
+  <div class="h-[1px] w-full bg-white bg-opacity-20"></div>
+
+  <div class="container py-10">
+    <p class="text-center text-white">© 2021 Shopwise. All Rights Reserved.</p>
   </div>
 </footer>

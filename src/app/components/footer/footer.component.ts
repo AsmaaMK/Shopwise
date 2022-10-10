@@ -7,6 +7,13 @@ import {
   faInstagram,
 } from '@fortawesome/free-brands-svg-icons';
 
+import {
+  faLocationDot,
+  faEnvelope,
+  faMobileScreen,
+  faEnvelopeOpenText
+} from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
@@ -18,6 +25,10 @@ export class FooterComponent implements OnInit {
   faGooglePlus = faGooglePlus;
   faYoutube = faYoutube;
   faInstagram = faInstagram;
+  faLocation = faLocationDot;
+  faEmail = faEnvelope;
+  faMobile = faMobileScreen;
+  faSubscribe = faEnvelopeOpenText;
 
   constructor() {}
 
