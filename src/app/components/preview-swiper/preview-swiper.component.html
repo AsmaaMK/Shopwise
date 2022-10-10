@@ -1,0 +1,16 @@
+<section id="preview-section" class="relative my-20">
+  <swiper [config]="swiperConfig">
+    <ng-template *ngFor="let img of imgList" swiperSlide>
+      <div class="image h-full w-full">
+        <img [src]="img" class="h-full w-full object-cover object-center" />
+      </div>
+    </ng-template>
+  </swiper>
+
+  <div
+    class="absolute top-1/2 left-1/2 z-10 bg-opacity-90 flex h-28 w-[90vw] -translate-y-1/2 -translate-x-1/2 flex-col items-center justify-center rounded-full bg-white text-center lg:w-96"
+  >
+    <p class="text-xl font-bold text-accent">Instagram</p>
+    <p class="text-accent">@shoppingzone</p>
+  </div>
+</section>

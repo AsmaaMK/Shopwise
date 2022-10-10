@@ -1,0 +1,29 @@
+@import "swiper/scss";
+@import "swiper/scss/autoplay";
+
+#preview-section {
+  .swiper-slide {
+    height: 200px;
+  }
+
+  .swiper-content {
+    height: 100%;
+  }
+
+  .image {
+    @apply relative transition-all duration-500;
+
+    &::after {
+      content: "";
+      @apply absolute top-0 left-0 right-0 bottom-0 bg-black opacity-0 transition-all duration-500;
+    }
+
+    &:hover {
+      @apply scale-110;
+
+      &::after {
+        @apply opacity-50;
+      }
+    }
+  }
+}

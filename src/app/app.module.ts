@@ -13,6 +13,7 @@ import { CardComponent } from './components/card/card.component';
 import { ExclusiveProductsComponent } from './components/exclusive-products/exclusive-products.component';
 import { SalesComponent } from './components/sales/sales.component';
 import { TrendingItemsComponent } from './components/trending-items/trending-items.component';
+import { PreviewSwiperComponent } from './components/preview-swiper/preview-swiper.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { TrendingItemsComponent } from './components/trending-items/trending-ite
     ExclusiveProductsComponent,
     SalesComponent,
     TrendingItemsComponent,
+    PreviewSwiperComponent,
   ],
   imports: [
     BrowserModule,
