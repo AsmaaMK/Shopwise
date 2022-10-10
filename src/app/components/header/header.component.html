@@ -1,1 +1,31 @@
-<p>header works!</p>
+<header class="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
+  <div class="container flex items-center gap-4 py-4">
+    <h1 class="flex items-center gap-2 text-lg md:text-2xl font-bold text-accent">
+      <img src="../../../assets/shopwise-logo.svg" alt="" class="md:w-10" />
+      <span>Shopwise</span>
+    </h1>
+    <form class="flex-1">
+      <input
+        type="text"
+        placeholder="What are you looking for?"
+        class="w-full rounded-full border border-gray-300 px-4 py-2 outline-none focus:border-primary"
+      />
+    </form>
+    <nav>
+      <ul class="flex gap-5">
+        <li>
+          <a routerLink="/dashboard" class="link">
+            <fa-icon [icon]="faUser"></fa-icon>
+            <span class="hidden md:inline">Login</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/heroes" class="link">
+            <fa-icon [icon]="faCart"></fa-icon>
+            <span class="hidden md:inline">Cart</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
