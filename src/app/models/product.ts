@@ -1,10 +1,20 @@
 export type Product = {
   id: number;
-  name: string;
+  title: string;
+  description: string;
   price: number;
-  oldPrice?: number;
-  numberOfReviews: number;
+  discountPercentage: number;
   rating: number;
-  image: string;
-  inMyFavorites: boolean;
+  stock: number;
+  brand: string;
+  category: string;
+  thumbnail: string;
+  images: string[];
+};
+
+export type GetProductsResponse = {
+  products: Product[];
+  total: number;
+  skip: number;
+  limit: number;
 };

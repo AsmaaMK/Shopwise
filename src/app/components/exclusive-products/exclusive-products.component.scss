@@ -1,0 +1,6 @@
+@use '../../../styles/components/titles.scss';
+@use '../../../styles/helpers/colors.scss' as *;
+
+.my-pagination::ng-deep .ngx-pagination .current {
+  background: $primary !important;
+}

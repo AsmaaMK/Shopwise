@@ -1,26 +1,50 @@
 <header class="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
   <div class="container flex items-center gap-4 py-4">
     <h1 class="flex items-center gap-2 text-lg md:text-2xl font-bold text-accent">
-      <img src="../../../assets/shopwise-logo.svg" alt="" class="md:w-10" />
-      <span>Shopwise</span>
-    </h1>
-    <form class="flex-1">
-      <input
-        type="text"
-        placeholder="What are you looking for?"
-        class="w-full rounded-full border border-gray-300 px-4 py-2 outline-none focus:border-primary"
+      <img
+        src="../../../assets/shopwise-logo.svg"
+        alt=""
+        class="md:w-10"
       />
+      <span class="hidden md:inline">Shopwise</span>
+    </h1>
+
+    <form class="flex-1 relative">
+      <input
+        type="search"
+        placeholder="What are you looking for?"
+        class="w-full rounded-full border border-gray-300 px-4 py-2 outline-none focus:border-gray-500"
+      />
+      <div class="search-results absolute w-full bg-white rounded-2xl shadow-sm top-12 p-4 border border-gray-300">
+        <ul class="flex flex-col gap-2">
+          <li class="flex items-center gap-2">
+            <img
+              src="https://images.unsplash.com/photo-1616166330003-8e1b0b2b2f1a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+              alt=""
+              class="w-10 h-10 rounded-full"
+            />
+            <span>Apple</span>
+          </li>
+        </ul>
+      </div>
     </form>
+
     <nav>
       <ul class="flex gap-5">
         <li>
-          <a routerLink="/dashboard" class="link">
+          <a
+            routerLink="/dashboard"
+            class="link"
+          >
             <fa-icon [icon]="faUser"></fa-icon>
             <span class="hidden md:inline">Login</span>
           </a>
         </li>
         <li>
-          <a routerLink="/heroes" class="link">
+          <a
+            routerLink="/heroes"
+            class="link"
+          >
             <fa-icon [icon]="faCart"></fa-icon>
             <span class="hidden md:inline">Cart</span>
           </a>

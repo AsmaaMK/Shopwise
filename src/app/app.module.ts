@@ -17,6 +17,8 @@ import { PreviewSwiperComponent } from './components/preview-swiper/preview-swip
 import { BrandsComponent } from './components/brands/brands.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -39,8 +41,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     SwiperModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
+    NgxPaginationModule,
+    HttpClientModule,
+
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

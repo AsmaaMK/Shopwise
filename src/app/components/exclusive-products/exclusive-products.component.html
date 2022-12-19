@@ -2,8 +2,12 @@
   <h2 class="section-title">Exclusive Products</h2>
   <div class="my-10 flex flex-wrap items-stretch justify-center gap-6">
     <product-card
-      *ngFor="let product of products"
+      *ngFor="let product of products | paginate: { itemsPerPage: productsPerPage, currentPage: currentPage,  totalItems: totalNumberOfProducts }"
       [product]="product"
     ></product-card>
+  </div>
+  
+  <div class="flex justify-center">
+    <pagination-controls class="my-pagination" (pageChange)="getCurrentPage($event)"></pagination-controls>
   </div>
 </section>

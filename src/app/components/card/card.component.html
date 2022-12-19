@@ -2,19 +2,29 @@
   *ngIf="product"
   class="card flex h-full min-h-[360px] w-full max-w-[250px] flex-col rounded-lg border border-gray-300"
 >
-  <div class="relative flex flex-1 items-center overflow-hidden">
-    <img class="p-3" [src]="product.image" alt="" />
+  <div class="max-h-60 relative flex flex-1 items-center overflow-hidden">
+    <img
+      class="p-3"
+      [src]="product.thumbnail"
+      alt=""
+    />
 
     <div class="action-btns">
       <button (click)="openProductDetails()">
         <fa-icon [icon]="faZoom"></fa-icon>
       </button>
-      <button class="favorite-btn delay-75" (click)="toggleFavorite()">
-        <fa-icon *ngIf="product.inMyFavorites" [icon]="faHeartFilled"></fa-icon>
+      <button
+        class="favorite-btn delay-75"
+        (click)="toggleFavorite()"
+      >
         <fa-icon
+          *ngIf="product"
+          [icon]="faHeartFilled"
+        ></fa-icon>
+        <!-- <fa-icon
           *ngIf="!product.inMyFavorites"
           [icon]="faheartOutlined"
-        ></fa-icon>
+        ></fa-icon> -->
       </button>
     </div>
   </div>
@@ -23,15 +33,19 @@
       href=""
       class="mb-3 block text-lg font-bold text-accent transition-colors hover:text-primary"
     >
-      {{ product.name }}
+      {{ product.title }}
     </a>
     <div class="card-footer relative flex flex-col gap-3">
-      <div class="flex justify-center gap-2 text-lg">
-        <span class="font-bold text-primary">${{ product.price }}</span>
-        <span class="text-gray-500 line-through" *ngIf="product.oldPrice"
-          >${{ product.oldPrice }}</span
-        >
-        <span class="text-green-600" *ngIf="priceOff">{{ priceOff }}% off</span>
+      <div class="flex justify-center gap-2 text-lg flex-wrap">
+        <span class="font-bold text-primary">${{ product.price | number: '1.0-0' }}</span>
+        <span
+          class="text-gray-500 line-through"
+          *ngIf="product.discountPercentage"
+        >${{ product.price * product.discountPercentage | number: '1.0-0' }}</span>
+        <span
+          class="text-green-600"
+          *ngIf="product.discountPercentage"
+        >{{ product.discountPercentage | number: '1.0-0' }}% off</span>
       </div>
 
       <div class="flex justify-center gap-4">
@@ -49,7 +63,7 @@
             [icon]="faStar"
           ></fa-icon>
         </div>
-        <span class="text-gray-500">({{ product.numberOfReviews }})</span>
+        <span class="text-gray-500">({{ product.stock }})</span>
       </div>
 
       <div class="add-to-cart absolute top-0 left-0 right-0 bottom-0 bg-white">

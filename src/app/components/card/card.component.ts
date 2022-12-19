@@ -35,7 +35,6 @@ export class CardComponent implements OnInit {
 
   ngOnInit(): void {
     this.calculateRatingStars();
-    this.calculatePriceOff();
   }
 
   calculateRatingStars() {
@@ -45,15 +44,8 @@ export class CardComponent implements OnInit {
     this.ratingStars = { filled, half, empty };
   }
 
-  calculatePriceOff() {
-    if (this.product.oldPrice) {
-      this.priceOff =
-        100 - Math.round((this.product.price / this.product.oldPrice) * 100);
-    }
-  }
-
   toggleFavorite() {
-    this.product.inMyFavorites = !this.product.inMyFavorites;
+    // this.product.inMyFavorites = !this.product.inMyFavorites;
   }
 
   openProductDetails() {
