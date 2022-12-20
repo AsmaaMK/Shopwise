@@ -1,3 +1,27 @@
 .link {
   @apply flex gap-2 text-accent transition-all duration-300 hover:text-primary;
 }
+
+.search-results {
+  ul {
+    max-height: 50vh;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 0.4rem;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #aaa;
+      border-radius: 50px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #888;
+    }
+  }
+}
