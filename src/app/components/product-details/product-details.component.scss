@@ -5,11 +5,11 @@
 .other-images {
   .swiper-button-next,
   .swiper-button-prev {
-    @apply text-accent transition-all duration-300 scale-50 opacity-0;
+    @apply scale-50 text-accent opacity-0 transition-all duration-300;
 
     &::before {
-      content: '';
-      @apply w-16 h-16 bg-gray-100 absolute -z-10 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2;
+      content: "";
+      @apply absolute left-1/2 top-1/2 -z-10 h-16 w-16 -translate-x-1/2 -translate-y-1/2 transform bg-gray-100;
     }
 
     &:hover {
@@ -29,8 +29,22 @@
   }
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.control-quantity {
+  button {
+    @apply w-10 border border-transparent bg-gray-200 text-xl text-accent outline-none focus:border-primary;
+
+    &:first-child {
+      border-radius: 0.25rem 0 0 0.25rem;
+    }
+    
+    &:last-child {
+      border-radius: 0 0.25rem 0.25rem 0;
+    }
+  }
 }

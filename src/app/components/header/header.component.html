@@ -1,13 +1,13 @@
 <header class="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
   <div class="container flex items-center gap-4 py-4">
-    <h1 class="flex items-center gap-2 text-lg md:text-2xl font-bold text-accent">
+    <a routerLink="/" class="flex items-center gap-2 text-lg md:text-2xl font-bold text-accent">
       <img
         src="../../../assets/shopwise-logo.svg"
         alt=""
         class="md:w-10"
       />
       <span class="hidden md:inline">Shopwise</span>
-    </h1>
+    </a>
 
     <form class="flex-1 md:relative">
       <input
@@ -19,9 +19,9 @@
         class="w-full rounded-full border border-gray-300 px-4 py-2 outline-none focus:border-gray-500"
       />
       <div *ngIf="searchResults" [ngClass]="{ hidden: !searchResultsPopupIsOpened }">
-        <div class="page-blocker fixed left-0 right-0 top-[75px] bottom-0" (click)="closeSearchResultsPopup()"></div>
+        <div class="page-blocker bg-gray-100 opacity-50 fixed left-0 right-0 top-[75px] bottom-0" (click)="closeSearchResultsPopup()"></div>
         <div
-          class="search-results absolute w-[95%] left-[2.5%] md:left-0 z-40 overflow-hidden md:w-full bg-white rounded-2xl shadow-sm  top-20 md:top-12  border border-gray-300"
+          class="search-results absolute w-[95%] left-[2.5%] md:left-0 z-40 overflow-hidden md:w-full bg-white rounded-2xl shadow-md top-20 md:top-12  border border-gray-300"
         >
           <ul
             *ngIf="searchResults.length; else noResults"

@@ -1,11 +1,8 @@
-<div
-  *ngIf="product"
-  class="container mt-24 my-6"
->
-  <div class="flex gap-8 flex-col md:flex-row">
+<div *ngIf="product" class="container my-6 mt-24">
+  <div class="flex flex-col gap-8 md:flex-row">
     <div class="images w-full md:w-1/2">
       <div
-        class="thumbnail w-full border border-gray-200 overflow-hidden"
+        class="thumbnail w-full overflow-hidden border border-gray-200"
         (mouseover)="onZoom($event, image)"
         (mousemove)="onZoom($event, image)"
         (mouseleave)="offZoom(image)"
@@ -13,11 +10,11 @@
         <img
           #image
           [src]="product.images[currentImageIndex]"
-          class="w-full aspect-square object-contain"
+          class="aspect-square w-full object-contain"
           alt=""
-        >
+        />
       </div>
-      <div class="other-images mt-4 relative">
+      <div class="other-images relative mt-4">
         <swiper [config]="swiperOptions">
           <ng-template
             swiperSlide
@@ -28,10 +25,10 @@
               alt=""
               (click)="currentImageIndex = i"
               (keyup.enter)="currentImageIndex = i"
-              [ngClass]="{'border-primary': currentImageIndex === i}"
+              [ngClass]="{ 'border-primary': currentImageIndex === i }"
               tabindex="0"
-              class="w-full aspect-square object-cover border border-gray-200 hover:cursor-pointer hover:border-gray-500 focus:border-primary focus:outline-none transition-all duration-300"
-            >
+              class="aspect-square w-full border border-gray-200 object-cover transition-all duration-300 hover:cursor-pointer hover:border-gray-500 focus:border-primary focus:outline-none"
+            />
           </ng-template>
         </swiper>
 
@@ -40,24 +37,28 @@
       </div>
     </div>
 
-    <div class="content flex flex-col gap-5 w-full md:w-1/2">
-      <p class="text-accent font-bold text-3xl">{{ product.title }}</p>
-      <p class="text-gray-500 text-xl">{{ product.description }}</p>
+    <div class="content flex w-full flex-col gap-5 md:w-1/2">
+      <p class="text-3xl font-bold text-accent">{{ product.title }}</p>
+      <p class="text-xl text-gray-500">{{ product.description }}</p>
 
-      <div class="flex gap-2 text-lg items-center flex-wrap">
-        <span class="font-bold text-3xl text-primary">${{ product.price | number: '1.0-0' }}</span>
+      <div class="flex flex-wrap items-center gap-2 text-lg">
+        <span class="text-3xl font-bold text-primary"
+          >${{ product.price | number: "1.0-0" }}</span
+        >
         <span
           class="text-gray-500 line-through"
           *ngIf="product.discountPercentage"
-        >${{ product.price * product.discountPercentage | number: '1.0-0' }}</span>
-        <span
-          class="text-green-600"
-          *ngIf="product.discountPercentage"
-        >{{ product.discountPercentage | number: '1.0-0' }}% off</span>
+          >${{
+            product.price * product.discountPercentage | number: "1.0-0"
+          }}</span
+        >
+        <span class="text-green-600" *ngIf="product.discountPercentage"
+          >{{ product.discountPercentage | number: "1.0-0" }}% off</span
+        >
       </div>
 
-      <div class=" flex gap-5 justify-between">
-        <div class="flex text-yellow-500 text-2xl">
+      <div class="flex justify-between gap-5">
+        <div class="flex text-2xl text-yellow-500">
           <fa-icon
             *ngFor="let star of [].constructor(ratingStars.filled)"
             [icon]="faStarFilled"
@@ -72,47 +73,46 @@
           ></fa-icon>
         </div>
 
-        <span class="bg-gray-500 text-white p-2 text-lg rounded-md">{{ product.stock }} in stock</span>
+        <span class="rounded-md bg-gray-500 p-2 text-lg text-white"
+          >{{ product.stock }} in stock</span
+        >
       </div>
-      <hr>
-      <div class="flex flex-wrap gap-5 items-center">
-        <div class="flex gap-2 items-center">
-          <button
-            (click)="decrementQuantity()"
-            class="bg-gray-200 rounded-full h-10 text-xl text-accent aspect-square border border-transparent outline-none focus:border-primary"
-          >-</button>
+      <hr />
+      <div class="flex flex-wrap items-center gap-5">
+        <div class="control-quantity flex items-stretch">
+          <button (click)="decrementQuantity()" class="">-</button>
           <input
             type="number"
-            class="border p-2 text-lg text-center w-16 outline-none focus:border-primary"
+            class="w-14 border p-2 text-center text-lg outline-none focus:border-primary"
             [value]="quantity"
             min="0"
             max="{{ product.stock }}"
-          >
-          <button
-            (click)="incrementQuantity()"
-            class="bg-gray-200 rounded-full h-10 text-xl text-accent aspect-square border border-transparent outline-none focus:border-primary"
-          >+</button>
+          />
+          <button (click)="incrementQuantity()" class="">+</button>
         </div>
 
         <button
-          class="btn-fill-primary text-lg flex items-center justify-center gap-2"
+          class="btn-fill-primary flex items-center justify-center gap-2 text-lg"
           (click)="addToCart()"
         >
           <fa-icon [icon]="faCart"></fa-icon>
           <span>Add To Cart</span>
         </button>
 
-        <button class="favorite-btn delay-75 text-accent hover:text-primary transition-all duration-300 text-2xl">
-          <fa-icon
-            *ngIf="product"
-            [icon]="faHeartFilled"
-          ></fa-icon>
+        <button
+          class="favorite-btn text-2xl text-accent transition-all delay-75 duration-300 hover:text-primary"
+        >
+          <fa-icon *ngIf="product" [icon]="faHeartFilled"></fa-icon>
         </button>
       </div>
-      <hr>
+      <hr />
       <div>
-        <p class="text-gray-500 text-lg">Brand: <span class="text-gray-700">{{product.brand}}</span></p>
-        <p class="text-gray-500 text-lg">Category: <span class="text-gray-700">{{product.category}}</span></p>
+        <p class="text-lg text-gray-500">
+          Brand: <span class="text-gray-700">{{ product.brand }}</span>
+        </p>
+        <p class="text-lg text-gray-500">
+          Category: <span class="text-gray-700">{{ product.category }}</span>
+        </p>
       </div>
     </div>
   </div>

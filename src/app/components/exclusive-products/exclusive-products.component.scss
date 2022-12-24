@@ -1,6 +1,10 @@
-@use '../../../styles/components/titles.scss';
-@use '../../../styles/helpers/colors.scss' as *;
+@use "../../../styles/components/titles.scss";
+@use "../../../styles/helpers/colors.scss" as *;
 
 .my-pagination::ng-deep .ngx-pagination .current {
   background: $primary !important;
+}
+
+select {
+  @apply text-accent w-full max-w-[250px] rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-base focus:border-primary focus:outline-none sm:text-lg;
 }

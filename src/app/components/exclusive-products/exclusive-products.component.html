@@ -1,13 +1,45 @@
 <section class="container my-12">
   <h2 class="section-title">Exclusive Products</h2>
+
+  <div class="filters my-10 flex flex-wrap items-center justify-center gap-5">
+    <select
+      #categoryInput
+      (change)="getProductsByCategory(categoryInput.value)"
+      name=""
+      id=""
+    >
+      <option selected disabled value="">Filter by category</option>
+      <option *ngFor="let category of allCategories" [value]="category">
+        {{ category }}
+      </option>
+    </select>
+
+    <select #sortInput (change)="sortProducts(sortInput.value)" name="" id="">
+      <option selected disabled value="">Sort by</option>
+      <option value="asc">Price: Low to High</option>
+      <option value="desc">Price: High to Low</option>
+    </select>
+  </div>
+
   <div class="my-10 flex flex-wrap items-stretch justify-center gap-6">
     <product-card
-      *ngFor="let product of products | paginate: { itemsPerPage: productsPerPage, currentPage: currentPage,  totalItems: totalNumberOfProducts }"
+      *ngFor="
+        let product of products
+          | paginate
+            : {
+                itemsPerPage: productsPerPage,
+                currentPage: currentPage,
+                totalItems: totalNumberOfProducts
+              }
+      "
       [product]="product"
     ></product-card>
   </div>
-  
+
   <div class="flex justify-center">
-    <pagination-controls class="my-pagination" (pageChange)="getCurrentPage($event)"></pagination-controls>
+    <pagination-controls
+      class="my-pagination"
+      (pageChange)="getCurrentPage($event)"
+    ></pagination-controls>
   </div>
 </section>

@@ -12,6 +12,7 @@ export class ExclusiveProductsComponent implements OnInit {
   products!: Product[];
   totalNumberOfProducts: number = 100;
   productsPerPage: number = 20;
+  allCategories!: string[];
 
   constructor(private productsService: ProductsService) {}
 
@@ -22,6 +23,10 @@ export class ExclusiveProductsComponent implements OnInit {
         this.products = res.products;
         this.totalNumberOfProducts = res.total;
       });
+
+    this.productsService.getAllCategories().subscribe((res) => {
+      this.allCategories = res;
+    });
   }
 
   getCurrentPage($event: number) {
@@ -35,5 +40,22 @@ export class ExclusiveProductsComponent implements OnInit {
       .subscribe((res) => {
         this.products = res.products;
       });
+  }
+
+  getProductsByCategory(category: string) {
+    this.productsService.getProductsByCategory(category).subscribe((res) => {
+      this.products = res.products;
+      this.totalNumberOfProducts = res.total;
+    });
+  }
+
+  sortProducts(sortType: string) {
+    this.products.sort((a, b) => {
+      if (sortType === 'asc') {
+        return a.price - b.price;
+      } else {
+        return b.price - a.price;
+      }
+    });
   }
 }
