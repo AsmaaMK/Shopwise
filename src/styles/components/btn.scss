@@ -19,7 +19,8 @@
 .btn-outline-primary {
   @apply btn border-primary text-primary;
 
-  &:hover {
+  &:hover,
+  &:focus {
     @apply text-white;
 
     &::after,
@@ -32,7 +33,8 @@
 .btn-outline-accent {
   @apply btn border-accent text-accent;
 
-  &:hover {
+  &:hover,
+  &:focus {
     @apply text-white;
 
     &::after,
@@ -50,7 +52,8 @@
     @apply w-1/2 bg-primary;
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     @apply text-primary;
 
     &::after,
@@ -68,7 +71,8 @@
     @apply w-1/2 bg-accent;
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     @apply text-accent;
 
     &::after,

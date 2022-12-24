@@ -1,0 +1,36 @@
+@use "../../../styles/components/btn.scss";
+@import "swiper/scss";
+@import "swiper/scss/navigation";
+
+.other-images {
+  .swiper-button-next,
+  .swiper-button-prev {
+    @apply text-accent transition-all duration-300 scale-50 opacity-0;
+
+    &::before {
+      content: '';
+      @apply w-16 h-16 bg-gray-100 absolute -z-10 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2;
+    }
+
+    &:hover {
+      @apply text-white;
+
+      &::before {
+        @apply bg-primary;
+      }
+    }
+  }
+
+  &:hover {
+    .swiper-button-next,
+    .swiper-button-prev {
+      @apply opacity-100;
+    }
+  }
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}

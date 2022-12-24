@@ -4,7 +4,7 @@
 >
   <div class="max-h-60 relative flex flex-1 items-center overflow-hidden">
     <img
-      class="p-3"
+      class="object-cover w-full h-full"
       [src]="product.thumbnail"
       alt=""
     />
@@ -30,8 +30,8 @@
   </div>
   <div class="card-content p-4 text-center">
     <a
-      href=""
-      class="mb-3 block text-lg font-bold text-accent transition-colors hover:text-primary"
+      [routerLink]="['/product', product.id]"
+      class="mb-3 block text-lg font-bold text-accent transition-colors hover:text-primary focus:text-primary outline-none"
     >
       {{ product.title }}
     </a>

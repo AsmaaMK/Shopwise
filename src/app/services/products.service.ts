@@ -23,4 +23,8 @@ export class ProductsService {
       `${this.apiURL}/products?limit=${limit}&skip=${skip}`
     );
   }
+
+  getProductById(id: number): Observable<Product> {
+    return this.http.get<Product>(`${this.apiURL}/products/${id}`);
+  }
 }

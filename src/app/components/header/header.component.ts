@@ -15,8 +15,8 @@ export class HeaderComponent implements OnInit {
 
   private readonly searchSubject = new Subject<string>();
   private searchSubscription!: Subscription;
-  searchResults: any[] = [];
   searchResultsPopupIsOpened: boolean = false;
+  searchResults!: any[];              
 
   constructor(private productsService: ProductsService) {}
 
@@ -42,5 +42,13 @@ export class HeaderComponent implements OnInit {
 
   ngOnDestroy() {
     this.searchSubscription.unsubscribe();
+  }
+
+  openSearchResultsPopup() {
+    this.searchResultsPopupIsOpened = true;
+  }
+
+  closeSearchResultsPopup() {
+    this.searchResultsPopupIsOpened = false;
   }
 }

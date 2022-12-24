@@ -5,7 +5,7 @@
     @apply absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center gap-4 bg-black bg-opacity-30 opacity-0 transition-all duration-300;
 
     button {
-      @apply flex h-10 w-10 translate-y-5 items-center justify-center rounded-full bg-white p-2 text-accent transition-all duration-300 hover:bg-primary hover:text-white;
+      @apply flex h-10 w-10 translate-y-5 items-center justify-center rounded-full bg-white p-2 text-accent transition-all duration-300 hover:bg-primary hover:text-white focus:bg-primary focus:text-white outline-none;
     }
   }
 
@@ -33,5 +33,21 @@
         @apply translate-y-0;
       }
     }
+  }
+
+  .action-btns:has(button:focus) {
+    @apply opacity-100;
+  }
+
+  .add-to-cart:has(button:focus) {
+    @apply opacity-100;
+  }
+
+  .action-btns > button:focus {
+    @apply translate-y-5;
+  }
+
+  .add-to-cart > button:focus {
+    @apply translate-y-0;
   }
 }
