@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { ProductsService } from 'src/app/services/products.service';
 import SwiperCore, { SwiperOptions, Navigation } from 'swiper';
@@ -13,6 +13,7 @@ import {
   faStarHalfStroke,
   faStar,
 } from '@fortawesome/free-regular-svg-icons';
+import { CartService } from 'src/app/services/cart.service';
 
 SwiperCore.use([Navigation]);
 
@@ -29,7 +30,7 @@ export class ProductDetailsComponent implements OnInit {
   faCart = faCartPlus;
   faHeartFilled = faHeart;
 
-  productId: number = +this.router.url.split('/')[2];
+  productId!: number;
   product!: Product;
   currentImageIndex: number = 0;
 
@@ -54,15 +55,23 @@ export class ProductDetailsComponent implements OnInit {
 
   constructor(
     private productsService: ProductsService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private route: ActivatedRoute,
+    private cartService: CartService
+  ) {
+    this.route.params.subscribe((params: any) => {
+      this.productId = +params.id;
+      this.productsService
+        .getProductById(this.productId)
+        .subscribe((product) => {
+          this.product = product;
+          this.calculateRatingStars();
+        });
+    });
+  }
 
   ngOnInit(): void {
-    this.productsService.getProductById(this.productId).subscribe((product) => {
-      console.log(product);
-      this.product = product;
-      this.calculateRatingStars();
-    });
+    this.quantity = this.cartService.getQuantityOfProduct(this.productId);
   }
 
   calculateRatingStars() {
@@ -85,11 +94,12 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addToCart() {
-    console.log('add to cart');
+    this.cartService.addToCart(this.productId, this.quantity);
+    console.log(this.cartService.getCartProducts());
   }
 
   decrementQuantity() {
-    if (this.quantity > 0) this.quantity--;
+    if (this.quantity > 1) this.quantity--;
   }
 
   incrementQuantity() {

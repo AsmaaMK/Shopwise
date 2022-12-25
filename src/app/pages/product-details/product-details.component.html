@@ -2,7 +2,7 @@
   <div class="flex flex-col gap-8 md:flex-row">
     <div class="images w-full md:w-1/2">
       <div
-        class="thumbnail w-full overflow-hidden border border-gray-200"
+        class="thumbnail w-full overflow-hidden border border-gray-200  transition-all duration-75"
         (mouseover)="onZoom($event, image)"
         (mousemove)="onZoom($event, image)"
         (mouseleave)="offZoom(image)"
@@ -10,7 +10,7 @@
         <img
           #image
           [src]="product.images[currentImageIndex]"
-          class="aspect-square w-full object-contain"
+          class="aspect-square w-full object-contain transition-all duration-75 cursor-zoom-in"
           alt=""
         />
       </div>
@@ -77,6 +77,7 @@
           >{{ product.stock }} in stock</span
         >
       </div>
+
       <hr />
       <div class="flex flex-wrap items-center gap-5">
         <div class="control-quantity flex items-stretch">
@@ -85,8 +86,10 @@
             type="number"
             class="w-14 border p-2 text-center text-lg outline-none focus:border-primary"
             [value]="quantity"
-            min="0"
+            #quantityInput
+            min="1"
             max="{{ product.stock }}"
+            (change)="quantity = +quantityInput.value"
           />
           <button (click)="incrementQuantity()" class="">+</button>
         </div>
@@ -99,12 +102,13 @@
           <span>Add To Cart</span>
         </button>
 
-        <button
+        <!-- <button
           class="favorite-btn text-2xl text-accent transition-all delay-75 duration-300 hover:text-primary"
         >
           <fa-icon *ngIf="product" [icon]="faHeartFilled"></fa-icon>
-        </button>
+        </button> -->
       </div>
+
       <hr />
       <div>
         <p class="text-lg text-gray-500">

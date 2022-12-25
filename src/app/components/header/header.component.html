@@ -1,11 +1,10 @@
 <header class="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
   <div class="container flex items-center gap-4 py-4">
-    <a routerLink="/" class="flex items-center gap-2 text-lg md:text-2xl font-bold text-accent">
-      <img
-        src="../../../assets/shopwise-logo.svg"
-        alt=""
-        class="md:w-10"
-      />
+    <a
+      routerLink="/"
+      class="flex items-center gap-2 text-lg font-bold text-accent md:text-2xl"
+    >
+      <img src="../../../assets/shopwise-logo.svg" alt="" class="md:w-10" />
       <span class="hidden md:inline">Shopwise</span>
     </a>
 
@@ -18,10 +17,16 @@
         (input)="onSearchInput(searchInput.value)"
         class="w-full rounded-full border border-gray-300 px-4 py-2 outline-none focus:border-gray-500"
       />
-      <div *ngIf="searchResults" [ngClass]="{ hidden: !searchResultsPopupIsOpened }">
-        <div class="page-blocker bg-gray-100 opacity-50 fixed left-0 right-0 top-[75px] bottom-0" (click)="closeSearchResultsPopup()"></div>
+      <div
+        *ngIf="searchResults && searchInput.value"
+        [ngClass]="{ hidden: !searchResultsPopupIsOpened }"
+      >
         <div
-          class="search-results absolute w-[95%] left-[2.5%] md:left-0 z-40 overflow-hidden md:w-full bg-white rounded-2xl shadow-md top-20 md:top-12  border border-gray-300"
+          class="page-blocker fixed left-0 right-0 top-[75px] bottom-0 bg-gray-100 opacity-50"
+          (click)="closeSearchResultsPopup()"
+        ></div>
+        <div
+          class="search-results absolute left-[2.5%] top-20 z-40 w-[95%] overflow-hidden rounded-2xl border border-gray-300 bg-white shadow-md md:left-0 md:top-12 md:w-full"
         >
           <ul
             *ngIf="searchResults.length; else noResults"
@@ -29,16 +34,16 @@
           >
             <li *ngFor="let result of searchResults">
               <a
-                class="flex items-center gap-2 hover:bg-gray-100 hover:text-primary px-4 py-2 transition-colors"
+                class="flex items-center gap-2 px-4 py-2 transition-colors hover:bg-gray-100 hover:text-primary"
                 (click)="closeSearchResultsPopup()"
                 [routerLink]="['/product', result.id]"
               >
                 <img
                   [src]="result.images[0]"
                   alt=""
-                  class="w-10 h-10 rounded-full"
+                  class="h-10 w-10 rounded-full"
                 />
-                <span>{{result.title}}</span>
+                <span>{{ result.title }}</span>
               </a>
             </li>
           </ul>
@@ -55,22 +60,21 @@
     <nav>
       <ul class="flex gap-5">
         <li>
-          <a
-            routerLink="/dashboard"
-            class="link"
-          >
+          <a routerLink="/dashboard" class="link">
             <fa-icon [icon]="faUser"></fa-icon>
             <span class="hidden md:inline">Login</span>
           </a>
         </li>
-        <li>
-          <a
-            routerLink="/heroes"
-            class="link"
-          >
+        <li class="relative">
+          <a routerLink="/cart" class="link">
             <fa-icon [icon]="faCart"></fa-icon>
-            <span class="hidden md:inline">Cart</span>
+            <span class="hidden md:inline"></span>
           </a>
+          <span
+            *ngIf="cartProducts.length"
+            class="absolute h-5 w-5 rounded-full bg-primary text-center text-sm text-white -right-2 -top-2"
+            >{{ cartProducts.length }}</span
+          >
         </li>
       </ul>
     </nav>

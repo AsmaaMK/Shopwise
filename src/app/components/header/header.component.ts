@@ -3,6 +3,8 @@ import { faUser, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { ProductsService } from 'src/app/services/products.service';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Subject, Subscription } from 'rxjs';
+import { CartProduct } from 'src/app/models/cart';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -16,9 +18,14 @@ export class HeaderComponent implements OnInit {
   private readonly searchSubject = new Subject<string>();
   private searchSubscription!: Subscription;
   searchResultsPopupIsOpened: boolean = false;
-  searchResults!: any[];              
+  searchResults!: any[];
 
-  constructor(private productsService: ProductsService) {}
+  cartProducts!: CartProduct[];
+
+  constructor(
+    private productsService: ProductsService,
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
     this.searchSubscription = this.searchSubject
@@ -33,11 +40,12 @@ export class HeaderComponent implements OnInit {
         this.searchResults = results;
         this.searchResultsPopupIsOpened = true;
       });
+
+    this.cartProducts = this.cartService.getCartProducts();
   }
 
   onSearchInput(keyword: string) {
-    if (keyword === '') this.searchResultsPopupIsOpened = false;
-    else this.searchSubject.next(keyword.trim());
+    this.searchSubject.next(keyword.trim());
   }
 
   ngOnDestroy() {

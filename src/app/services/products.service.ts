@@ -14,7 +14,9 @@ export class ProductsService {
 
   searchProducts(query: string): Observable<Product[]> {
     return this.http
-      .get<GetProductsResponse>(`${this.apiURL}/products/search?q=${query}`)
+      .get<GetProductsResponse>(`${this.apiURL}/products/search`, {
+        params: query? { q: query }: {},
+      })
       .pipe(map((res) => res.products));
   }
 
