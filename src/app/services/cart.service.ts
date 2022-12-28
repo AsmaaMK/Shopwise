@@ -31,9 +31,9 @@ export class CartService {
     return productQuantity;
   }
 
-  addToCart(productId: number, quantity: number) {
-    if (quantity > 0 && !this.changeQuantityOfProduct(productId, quantity)) {
-      this.cartProducts.push({ productId, quantity });
+  addToCart(product: CartProduct) {
+    if (product.quantity > 0 && !this.changeQuantityOfProduct(product.productId, product.quantity)) {
+      this.cartProducts.push(product);
       this.updateStorageValue();
     }
   }

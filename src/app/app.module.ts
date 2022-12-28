@@ -22,6 +22,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
     ProductDetailsComponent,
     CartComponent,
     CheckoutComponent,
+    NotFoundComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,

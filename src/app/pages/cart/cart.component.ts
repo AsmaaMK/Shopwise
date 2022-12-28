@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faL } from '@fortawesome/free-solid-svg-icons';
 import { CartProduct } from 'src/app/models/cart';
 import { Product } from 'src/app/models/product';
 import { CartService } from 'src/app/services/cart.service';
@@ -10,8 +11,7 @@ import { ProductsService } from 'src/app/services/products.service';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit {
-  cartProducts!: CartProduct[];
-  products: Product[] = [];
+  products!: CartProduct[];
 
   constructor(
     private cartService: CartService,
@@ -19,13 +19,6 @@ export class CartComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.cartProducts = this.cartService.getCartProducts();
-    this.cartProducts.forEach((product) => {
-      this.protectsService
-        .getProductById(product.productId)
-        .subscribe((res) => {
-          this.products.push(res);
-        });
-    });
+    this.products = this.cartService.getCartProducts();
   }
 }

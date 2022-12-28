@@ -11,6 +11,8 @@ import {
   faStarHalfStroke,
   faStar,
 } from '@fortawesome/free-regular-svg-icons';
+import { CartProduct } from 'src/app/models/cart';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'product-card',
@@ -31,7 +33,7 @@ export class CardComponent implements OnInit {
   priceOff: number = 0;
   ratingStars!: { filled: number; half: number; empty: number };
 
-  constructor() {}
+  constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
     this.calculateRatingStars();
@@ -53,6 +55,14 @@ export class CardComponent implements OnInit {
   }
 
   addToCart() {
-    console.log('add to cart');
+    const cartProduct: CartProduct = {
+      productId: this.product.id,
+      name: this.product.title,
+      price: this.product.price,
+      img: this.product.thumbnail,
+      quantity: 1,
+    };
+    this.cartService.addToCart(cartProduct);
+    console.log(this.cartService.getCartProducts());
   }
 }

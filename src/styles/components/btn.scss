@@ -25,7 +25,8 @@
 
     &::after,
     &::before {
-      @apply w-1/2 bg-primary;
+      width: calc(50% + 4px);
+      @apply bg-primary;
     }
   }
 }
@@ -39,7 +40,8 @@
 
     &::after,
     &::before {
-      @apply w-1/2 bg-accent;
+      width: calc(50% + 4px);
+      @apply bg-accent;
     }
   }
 }
@@ -49,7 +51,8 @@
 
   &::after,
   &::before {
-    @apply w-1/2 bg-primary;
+    width: calc(50% + 4px);
+    @apply bg-primary;
   }
 
   &:hover,
@@ -68,6 +71,7 @@
 
   &::after,
   &::before {
+    width: calc(50% + 4px);
     @apply w-1/2 bg-accent;
   }
 

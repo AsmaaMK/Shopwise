@@ -14,6 +14,7 @@ import {
   faStar,
 } from '@fortawesome/free-regular-svg-icons';
 import { CartService } from 'src/app/services/cart.service';
+import { CartProduct } from 'src/app/models/cart';
 
 SwiperCore.use([Navigation]);
 
@@ -94,7 +95,14 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addToCart() {
-    this.cartService.addToCart(this.productId, this.quantity);
+    const cartProduct: CartProduct = {
+      productId: this.productId,
+      name: this.product.title,
+      price: this.product.price,
+      img: this.product.thumbnail,
+      quantity: this.quantity,
+    };
+    this.cartService.addToCart(cartProduct);
     console.log(this.cartService.getCartProducts());
   }
 

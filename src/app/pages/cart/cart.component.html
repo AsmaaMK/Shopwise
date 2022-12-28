@@ -1,2 +1,27 @@
-<div class="mt-[100px]"></div>
-<p *ngFor="let product of products">{{ product.title }}</p>
+<div
+  class="container min-h-screen items-center justify-center pt-20"
+>
+  <div class="h-full w-full" *ngIf="products.length; else emptyCart">
+    <div *ngFor="let product of products">
+      <div class="flex gap-4">
+        <img [src]="product.img" alt="" class="w-20 h-20 md:w-32 md:h-32 object-cover border"/>
+        <div class="flex flex-col">
+          <p>{{ product.name }}</p>
+          <p>
+            <span>{{ product.quantity }}</span> ×
+            <span>{{ product.price | currency }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #emptyCart>
+    <div class="flex h-full w-full flex-col items-center justify-center">
+      <p class="mb-12 text-4xl font-semibold text-accent">Your cart is empty</p>
+
+      <div class="empty-cart w-1/2">
+        <img src="../../../assets/imgs/empty-cart.png" alt="" class="w-full" />
+      </div>
+    </div>
+  </ng-template>
+</div>

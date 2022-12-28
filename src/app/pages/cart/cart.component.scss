@@ -1,0 +1,36 @@
+@use "../../../styles/helpers/colors.scss" as *;
+
+.empty-cart {
+  position: relative;
+  text-align: center;
+
+  img {
+    opacity: 0.9;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+  }
+
+  &::before {
+    top: 10%;
+    left: 0;
+    width: 40%;
+    aspect-ratio: 1/1;
+    opacity: 0.05;
+    background-color: $primary;
+  }
+
+  &::after {
+    top: 50%;
+    right: 0;
+    width: 25%;
+    aspect-ratio: 1/1;
+    opacity: 0.1;
+    background-color: $accent;
+  }
+}

@@ -3,9 +3,11 @@
 @import "swiper/scss/navigation";
 
 .other-images {
+  overflow: hidden;
+
   .swiper-button-next,
   .swiper-button-prev {
-    @apply scale-50 text-accent opacity-0 transition-all duration-300;
+    @apply scale-50 text-accent transition-all duration-300;
 
     &::before {
       content: "";
@@ -21,10 +23,21 @@
     }
   }
 
+  .swiper-button-next {
+    @apply -right-10;
+  }
+
+  .swiper-button-prev {
+    @apply -left-10;
+  }
+
   &:hover {
-    .swiper-button-next,
+    .swiper-button-next {
+      @apply right-4;
+    }
+
     .swiper-button-prev {
-      @apply opacity-100;
+      @apply left-4;
     }
   }
 }
@@ -42,7 +55,7 @@ input[type="number"]::-webkit-outer-spin-button {
     &:first-child {
       border-radius: 0.25rem 0 0 0.25rem;
     }
-    
+
     &:last-child {
       border-radius: 0 0.25rem 0.25rem 0;
     }
