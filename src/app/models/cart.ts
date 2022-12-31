@@ -4,4 +4,5 @@ export type CartProduct = {
   price: number;
   name: string;
   img: string;
+  stock: number;
 };

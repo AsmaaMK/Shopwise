@@ -42,7 +42,7 @@ export class HeaderComponent implements OnInit {
       });
 
     this.cartProducts = this.cartService.getCartProducts();
-  }
+}
 
   onSearchInput(keyword: string) {
     this.searchSubject.next(keyword.trim());

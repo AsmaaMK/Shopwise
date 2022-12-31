@@ -61,8 +61,8 @@ export class CardComponent implements OnInit {
       price: this.product.price,
       img: this.product.thumbnail,
       quantity: 1,
+      stock: this.product.stock,
     };
     this.cartService.addToCart(cartProduct);
-    console.log(this.cartService.getCartProducts());
   }
 }

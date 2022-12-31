@@ -1,4 +1,5 @@
 @use "../../../styles/helpers/colors.scss" as *;
+@use "../../../styles/components/btn.scss";
 
 .empty-cart {
   position: relative;
@@ -33,4 +34,36 @@
     opacity: 0.1;
     background-color: $accent;
   }
+}
+
+.cart {
+  flex: 2;
+}
+
+.order {
+  flex: 1;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.control-quantity {
+  button {
+    @apply w-10 border border-transparent bg-gray-200 text-xl text-accent outline-none focus:border-primary;
+
+    &:first-child {
+      border-radius: 0.25rem 0 0 0.25rem;
+    }
+
+    &:last-child {
+      border-radius: 0 0.25rem 0.25rem 0;
+    }
+  }
+}
+
+.product-img {
+  min-width: 10rem;
 }

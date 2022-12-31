@@ -101,9 +101,9 @@ export class ProductDetailsComponent implements OnInit {
       price: this.product.price,
       img: this.product.thumbnail,
       quantity: this.quantity,
+      stock: this.product.stock
     };
     this.cartService.addToCart(cartProduct);
-    console.log(this.cartService.getCartProducts());
   }
 
   decrementQuantity() {

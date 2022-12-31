@@ -1,5 +1,5 @@
 .btn {
-  @apply relative z-0 overflow-hidden rounded-full border px-8 py-3 outline-none transition-all duration-300;
+  @apply relative z-0 overflow-hidden rounded-full border px-[1.5em] py-[0.5em] outline-none transition-all duration-300;
 
   &::after,
   &::before {

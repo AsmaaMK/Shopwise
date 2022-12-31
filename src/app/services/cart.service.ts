@@ -32,7 +32,10 @@ export class CartService {
   }
 
   addToCart(product: CartProduct) {
-    if (product.quantity > 0 && !this.changeQuantityOfProduct(product.productId, product.quantity)) {
+    if (
+      product.quantity > 0 &&
+      !this.changeQuantityOfProduct(product.productId, product.quantity)
+    ) {
       this.cartProducts.push(product);
       this.updateStorageValue();
     }
@@ -47,6 +50,7 @@ export class CartService {
 
   clearCartProducts() {
     this.storageService.removeFromStorage(CART_KEY);
+    this.cartProducts = [];
   }
 
   private updateStorageValue() {

@@ -1,22 +1,106 @@
-<div
-  class="container min-h-screen items-center justify-center pt-20"
->
-  <div class="h-full w-full" *ngIf="products.length; else emptyCart">
-    <div *ngFor="let product of products">
-      <div class="flex gap-4">
-        <img [src]="product.img" alt="" class="w-20 h-20 md:w-32 md:h-32 object-cover border"/>
-        <div class="flex flex-col">
-          <p>{{ product.name }}</p>
-          <p>
-            <span>{{ product.quantity }}</span> ×
-            <span>{{ product.price | currency }}</span>
-          </p>
+<div class="container flex min-h-screen items-center pt-24">
+  <div
+    class="mb-auto flex h-full w-full flex-col gap-8 md:flex-row"
+    *ngIf="products.length; else emptyCart"
+  >
+    <div class="flex-2">
+      <div class="flex items-center gap-3">
+        <h2 class="my-3 text-2xl font-bold text-accent">Cart</h2>
+        <span
+          class="rounded-md bg-gray-200 px-2 py-1 text-sm font-semibold text-gray-600"
+          >{{ products.length }} item{{ products.length > 1 ? "s" : "" }}</span
+        >
+      </div>
+      <div class="flex flex-col gap-3">
+        <div
+          *ngFor="let product of products; let i = index"
+          class="overflow-hidden rounded-md border bg-gray-50"
+        >
+          <div class="flex flex-wrap">
+            <div class="product-img flex-1">
+              <img
+                [src]="product.img"
+                alt=""
+                class="aspect-square h-full object-cover"
+              />
+            </div>
+            <div
+              class="flex-3 flex flex-col items-start justify-between gap-4 p-4"
+            >
+              <div
+                class="flex w-full flex-wrap justify-between gap-4 text-lg font-bold text-accent"
+              >
+                <a
+                  class="transition-colors duration-300 hover:text-primary"
+                  routerLink="/product/{{ product.productId }}"
+                  >{{ product.name }}</a
+                >
+                <p>{{ product.price | currency }}</p>
+              </div>
+              <div
+                class="flex w-full flex-wrap items-center justify-between gap-4"
+              >
+                <div class="control-quantity flex items-stretch">
+                  <button
+                    (click)="
+                      product.quantity > 1
+                        ? productQuantityChanged(i, product.quantity - 1)
+                        : true
+                    "
+                  >
+                    -
+                  </button>
+                  <input
+                    type="number"
+                    class="w-14 border p-2 text-center text-lg outline-none focus:border-primary"
+                    [value]="product.quantity"
+                    #quantityInput
+                    min="1"
+                    max="{{ product.stock }}"
+                    (input)="productQuantityChanged(i, +quantityInput.value)"
+                  />
+                  <button
+                    (click)="
+                      product.quantity < product.stock
+                        ? productQuantityChanged(i, product.quantity + 1)
+                        : true
+                    "
+                  >
+                    +
+                  </button>
+                </div>
+                <span
+                  class="rounded-md bg-gray-200 px-2 py-1 font-semibold text-gray-600"
+                  >{{ product.stock }} in stock</span
+                >
+              </div>
+              <button
+                class="btn-outline-accent flex gap-2 text-sm"
+                (click)="removeFromCart(product.productId, i)"
+              >
+                <fa-icon [icon]="faTrash"></fa-icon>
+                <span>Remove from cart</span>
+              </button>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+    <div class="flex-1">
+      <h2 class="my-3 text-2xl font-bold text-accent">Order Summary</h2>
+      <div
+        class="flex flex-col gap-6 overflow-hidden rounded-md border bg-gray-50 p-4"
+      >
+        <p class="flex justify-between gap-4 text-xl font-bold text-accent">
+          <span>Total</span>
+          <span>{{ total | currency }}</span>
+        </p>
+        <button class="btn-fill-primary w-full text-lg">Checkout</button>
       </div>
     </div>
   </div>
   <ng-template #emptyCart>
-    <div class="flex h-full w-full flex-col items-center justify-center">
+    <div class="mb-8 flex h-full w-full flex-col items-center justify-center">
       <p class="mb-12 text-4xl font-semibold text-accent">Your cart is empty</p>
 
       <div class="empty-cart w-1/2">
