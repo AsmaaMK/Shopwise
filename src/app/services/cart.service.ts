@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { CartProduct } from '../models/cart';
 import { StorageService } from './storage.service';
 
@@ -8,20 +9,23 @@ const CART_KEY = 'cart_products';
   providedIn: 'root',
 })
 export class CartService {
-  private cartProducts!: CartProduct[];
+  private $cartProducts = new BehaviorSubject<CartProduct[]>([]);
+  get cartProducts() {
+    return this.$cartProducts.asObservable();
+  }
 
   constructor(private storageService: StorageService) {
-    this.cartProducts = this.storageService.getStorageValue(CART_KEY);
-    if (!this.cartProducts) this.cartProducts = [];
+    this.$cartProducts = this.storageService.getStorageValue(CART_KEY);
+    if (!this.$cartProducts) this.$cartProducts;
   }
 
   getCartProducts() {
-    return this.cartProducts;
+    return this.$cartProducts;
   }
 
   getQuantityOfProduct(productId: number) {
     let productQuantity = 0;
-    this.cartProducts.forEach((product) => {
+    this.$cartProducts.forEach((product) => {
       if (product.productId == productId) {
         productQuantity = product.quantity;
         return;
@@ -36,25 +40,28 @@ export class CartService {
       product.quantity > 0 &&
       !this.changeQuantityOfProduct(product.productId, product.quantity)
     ) {
-      this.cartProducts.push(product);
+      this.$cartProducts = [product, ...this.$cartProducts];
       this.updateStorageValue();
     }
   }
 
   removeFromCart(productId: number) {
-    this.cartProducts = this.cartProducts.filter(
+    console.log(this.$cartProducts);
+    this.$cartProducts = this.$cartProducts.filter(
       (product) => product.productId !== productId
     );
-    this.updateStorageValue();
+    console.log(this.$cartProducts);
+
+    // this.updateStorageValue();
   }
 
   clearCartProducts() {
     this.storageService.removeFromStorage(CART_KEY);
-    this.cartProducts = [];
+    this.$cartProducts = [];
   }
 
   private updateStorageValue() {
-    this.storageService.setStorageValue(CART_KEY, this.cartProducts);
+    this.storageService.setStorageValue(CART_KEY, this.$cartProducts);
   }
 
   private changeQuantityOfProduct(
@@ -63,7 +70,7 @@ export class CartService {
   ): boolean {
     let productFound: boolean = false;
 
-    this.cartProducts.forEach((product) => {
+    this.$cartProducts.forEach((product) => {
       if (product.productId == productId) {
         product.quantity = quantity;
         productFound = true;
