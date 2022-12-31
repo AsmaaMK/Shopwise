@@ -1,0 +1,28 @@
+@use "../../../styles/helpers/colors.scss" as *;
+@use "../../../styles/components/btn.scss";
+
+.login-card {
+  width: 100%;
+  max-width: 500px;
+}
+
+input {
+  @apply w-full rounded-full bg-transparent px-4 py-2 text-lg text-accent outline-none;
+  border: 1px solid rgba($accent, 0.4);
+
+  &::placeholder {
+    color: rgba($accent, 0.7);
+  }
+
+  &:focus {
+    border-color: $accent;
+  }
+
+  &.error {
+    @apply border-red-500;
+  }
+}
+
+.error-message {
+  @apply text-red-500 text-sm mt-2 px-4;
+}

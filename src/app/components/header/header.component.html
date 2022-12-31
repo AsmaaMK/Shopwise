@@ -60,10 +60,16 @@
     <nav>
       <ul class="flex gap-5">
         <li>
-          <a routerLink="/dashboard" class="link">
-            <fa-icon [icon]="faUser"></fa-icon>
-            <span class="hidden md:inline">Login</span>
-          </a>
+          <button (click)="logoutUser()" class="link" *ngIf="authService.isLoggedIn.value; else login">
+            <fa-icon [icon]="faLogout"></fa-icon>
+            <span class="hidden md:inline">Logout</span>
+          </button>
+          <ng-template #login>
+            <a routerLink="/login" class="link">
+              <fa-icon [icon]="faUser"></fa-icon>
+              <span class="hidden md:inline">Login</span>
+            </a>
+          </ng-template>
         </li>
         <li class="relative">
           <a routerLink="/cart" class="link">

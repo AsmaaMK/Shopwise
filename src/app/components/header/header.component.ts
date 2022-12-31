@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { faUser, faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import {
+  faUser,
+  faCartShopping,
+  faArrowRightFromBracket,
+} from '@fortawesome/free-solid-svg-icons';
 import { ProductsService } from 'src/app/services/products.service';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Subject, Subscription } from 'rxjs';
 import { CartProduct } from 'src/app/models/cart';
 import { CartService } from 'src/app/services/cart.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -14,17 +19,18 @@ import { CartService } from 'src/app/services/cart.service';
 export class HeaderComponent implements OnInit {
   faUser = faUser;
   faCart = faCartShopping;
+  faLogout = faArrowRightFromBracket;
 
   private readonly searchSubject = new Subject<string>();
   private searchSubscription!: Subscription;
   searchResultsPopupIsOpened: boolean = false;
   searchResults!: any[];
-
   cartProducts!: CartProduct[];
 
   constructor(
     private productsService: ProductsService,
-    private cartService: CartService
+    private cartService: CartService,
+    public authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -42,7 +48,7 @@ export class HeaderComponent implements OnInit {
       });
 
     this.cartProducts = this.cartService.getCartProducts();
-}
+  }
 
   onSearchInput(keyword: string) {
     this.searchSubject.next(keyword.trim());
@@ -58,5 +64,9 @@ export class HeaderComponent implements OnInit {
 
   closeSearchResultsPopup() {
     this.searchResultsPopupIsOpened = false;
+  }
+
+  logoutUser() {
+    this.authService.logout();
   }
 }

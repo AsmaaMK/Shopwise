@@ -24,6 +24,8 @@ import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { LoginComponent } from './pages/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
     CheckoutComponent,
     NotFoundComponent,
     LoadingSpinnerComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,7 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
     FontAwesomeModule,
     NgxPaginationModule,
     HttpClientModule,
-
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

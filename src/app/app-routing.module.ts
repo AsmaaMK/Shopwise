@@ -5,6 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
   },
   {
     path: '**',
