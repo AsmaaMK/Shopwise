@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { StorageService } from './storage.service';
@@ -15,7 +16,8 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private router: Router
   ) {
     this.isLoggedIn = new BehaviorSubject(this.storageService.getStorageValue(USER_KEY));
   }
@@ -29,6 +31,7 @@ export class AuthService {
       .subscribe((res) => {
         this.storageService.setStorageValue(USER_KEY, res);
         this.isLoggedIn.next(true);
+        this.router.navigate(['/']);
       });
   }
 
