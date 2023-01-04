@@ -18,22 +18,24 @@ export class CartComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.products = this.cartService.getCartProducts();
-    this.calculateTotalPrice();
+    this.cartService.getCartProducts().subscribe((products) => {
+      this.products = products;
+      this.calculateTotalPrice();
+    });
   }
 
   calculateTotalPrice() {
     this.total = 0;
+    if (!this.products) return;
     this.products.forEach((product) => {
       this.total += product.price * product.quantity;
     });
   }
 
   removeFromCart(productId: number, productIndex: number) {
-    this.cartService.removeFromCart(productId);
     this.total -=
       this.products[productIndex].price * this.products[productIndex].quantity;
-    this.products.splice(productIndex, 1);
+    this.cartService.removeFromCart(productId);
   }
 
   productQuantityChanged(productIndex: number, productQuantity: number) {

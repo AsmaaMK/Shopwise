@@ -9,14 +9,19 @@ const CART_KEY = 'cart_products';
   providedIn: 'root',
 })
 export class CartService {
-  private $cartProducts = new BehaviorSubject<CartProduct[]>([]);
+  private $cartProducts!: BehaviorSubject<CartProduct[]>;
   get cartProducts() {
     return this.$cartProducts.asObservable();
   }
 
   constructor(private storageService: StorageService) {
-    this.$cartProducts = this.storageService.getStorageValue(CART_KEY);
-    if (!this.$cartProducts) this.$cartProducts;
+    const CART_IN_STORAGE = this.storageService.getStorageValue(CART_KEY);
+    if (CART_IN_STORAGE === undefined)
+      this.$cartProducts = new BehaviorSubject<CartProduct[]>([]);
+    else
+      this.$cartProducts = new BehaviorSubject(
+        this.storageService.getStorageValue(CART_KEY)
+      );
   }
 
   getCartProducts() {
@@ -25,7 +30,7 @@ export class CartService {
 
   getQuantityOfProduct(productId: number) {
     let productQuantity = 0;
-    this.$cartProducts.forEach((product) => {
+    this.$cartProducts.value.forEach((product) => {
       if (product.productId == productId) {
         productQuantity = product.quantity;
         return;
@@ -40,28 +45,27 @@ export class CartService {
       product.quantity > 0 &&
       !this.changeQuantityOfProduct(product.productId, product.quantity)
     ) {
-      this.$cartProducts = [product, ...this.$cartProducts];
+      this.$cartProducts.next([product, ...this.$cartProducts.value]);
       this.updateStorageValue();
     }
   }
 
   removeFromCart(productId: number) {
-    console.log(this.$cartProducts);
-    this.$cartProducts = this.$cartProducts.filter(
-      (product) => product.productId !== productId
+    this.$cartProducts.next(
+      this.$cartProducts.value.filter(
+        (product) => product.productId !== productId
+      )
     );
-    console.log(this.$cartProducts);
-
-    // this.updateStorageValue();
+    this.updateStorageValue();
   }
 
   clearCartProducts() {
     this.storageService.removeFromStorage(CART_KEY);
-    this.$cartProducts = [];
+    this.$cartProducts.next([]);
   }
 
   private updateStorageValue() {
-    this.storageService.setStorageValue(CART_KEY, this.$cartProducts);
+    this.storageService.setStorageValue(CART_KEY, this.$cartProducts.value);
   }
 
   private changeQuantityOfProduct(
@@ -70,7 +74,9 @@ export class CartService {
   ): boolean {
     let productFound: boolean = false;
 
-    this.$cartProducts.forEach((product) => {
+    if (!this.$cartProducts.value) return false;
+
+    this.$cartProducts.value.forEach((product) => {
       if (product.productId == productId) {
         product.quantity = quantity;
         productFound = true;

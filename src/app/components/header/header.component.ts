@@ -47,7 +47,9 @@ export class HeaderComponent implements OnInit {
         this.searchResultsPopupIsOpened = true;
       });
 
-    this.cartProducts = this.cartService.getCartProducts();
+    this.cartService.getCartProducts().subscribe((products) => {
+      this.cartProducts = products;
+    });
   }
 
   onSearchInput(keyword: string) {

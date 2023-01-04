@@ -1,7 +1,7 @@
 <div class="container flex min-h-screen items-center pt-24">
   <div
     class="mb-auto flex h-full w-full flex-col gap-8 md:flex-row"
-    *ngIf="products.length; else emptyCart"
+    *ngIf="products && products.length; else emptyCart"
   >
     <div class="flex-2">
       <div class="flex items-center gap-3">

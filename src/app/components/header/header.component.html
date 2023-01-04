@@ -77,7 +77,7 @@
             <span class="hidden md:inline"></span>
           </a>
           <span
-            *ngIf="cartProducts.length"
+            *ngIf="cartProducts && cartProducts.length"
             class="absolute h-5 w-5 rounded-full bg-primary text-center text-sm text-white -right-2 -top-2"
             >{{ cartProducts.length }}</span
           >
